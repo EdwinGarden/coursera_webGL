@@ -1,1 +1,3 @@
-# coursera_webGL
+# WebGL - Coursera 
+
+## Assignment 1
