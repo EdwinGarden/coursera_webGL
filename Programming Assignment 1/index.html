@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Coursera WebGL - Assignment 1</title>
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <script id="vertex-shader" type="x-shader/x-vertex">
+            attribute vec4 vPosition;
+
+            void main()
+            {
+                gl_Position = vPosition;
+            }
+        </script>
+
+        <script id="fragment-shader" type="x-shader/x-fragment">
+            precision mediump float;
+
+            void main()
+            {
+                gl_FragColor = vec4(0.28, 0.32, 0.84, 1);
+            }
+        </script>
+
+        <script type="text/javascript" src="common/webgl-utils.js"></script>
+        <script type="text/javascript" src="common/initShaders.js"></script>
+        <script type="text/javascript" src="common/MV.js"></script>
+        <script type="text/javascript" src="js/assignment1.js"></script>
+    </head>
+
+    <body class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <h1>Assignment 1</h1>
+                    <p>Twist & Tessellation</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Settings</h2>
+                <section>
+                    <form id="settings">
+                        <div class="form-group">
+                            <label for="theta">Degrees</label>
+                            <input type=range id=theta min=0 value=60 max=360 step=15 oninput="outputThetaValue(value)">
+                            <output for=theta id=thetaValue>60</output>
+                        </div>
+                        <div class="form-group">
+                            <label for="numDivisions">Divisions</label>
+                            <input type=range id=numDivisions min=0 value=4 max=7 step=1 oninput="outputNumDivisionsValue(value)">
+                            <output for=numDivisions id=numDivisionsValue>4</output>
+                        </div>
+                        <div class="form-group">
+                            <label>Fill</label>
+                            <input type="radio" id="fillSolid" name="fill" value="solid" checked>Solid
+                            <input type="radio" id="fillMesh" name="fill" value="mesh">Mesh
+                        </div>
+                        <div class="form-group">
+                            <label>Shape</label>
+                            <input type="radio" id="triangleShape" name="shape" value="triangle" checked>Triangle
+                            <input type="radio" id="squareShape" name="shape" value="square">Square
+                        </div>
+                        <div id="gasketGroup" class="form-group">
+                            <label for="gasket">Gasket</label>
+                            <input type="checkbox" id="gasket" name="gasket" value="gasket">
+                        </div>
+                        <div class="form-group">
+                            <input id="reset" class="btn btn-default" type="button" value="Reset">
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div class="col-sm-6">
+                <section>
+                    <canvas id="gl-canvas" width="600" height="600">
+                        Your browser doesn't support the HTML5 canvas element
+                    </canvas>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+
+        <script>
+            var outputThetaValue = function(value) {
+                document.querySelector('#thetaValue').value = value;
+            };
+            var outputNumDivisionsValue = function(value) {
+                document.querySelector('#numDivisionsValue').value = value;
+            };
+        </script>
+    </body>
+</html>
