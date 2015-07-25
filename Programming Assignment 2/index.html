@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coursera WebGL - Assignment 2</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        attribute vec4 vColor;
+        varying vec4 fColor;
+
+        void main() {
+            gl_Position = vPosition;
+            fColor = vColor;
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 fColor;
+
+        void main() {
+            gl_FragColor = fColor;
+        }
+    </script>
+
+    <script type="text/javascript" src="common/webgl-utils.js"></script>
+    <script type="text/javascript" src="common/initShaders.js"></script>
+    <script type="text/javascript" src="common/flatten.js"></script>
+    <script type="text/javascript" src="common/MV.js"></script>
+    <script type="text/javascript" src="js/assignment2.js"></script>
+</head>
+<body class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <h1>Assignment 2</h1>
+                <p>Painting with the mouse</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Settings</h2>
+            <section id="settings">
+                <div class="form-group">
+                    <label for="colorpicker">Choose color</label>
+                    <input type="color" name="colorpicker" id="colorpicker" value="#ff0000">
+                </div>
+                <div class="form-group">
+                    <label for="linesize">Size</label>
+                    <input type="range" id="linesize" name="linesize" value="1" min="1" max="20" step="1">
+                </div>
+                <div class="form-group">
+                    <button id="clear" class="btn btn-default">Clear</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-sm-6">
+            <section>
+                <canvas id="gl-canvas" width="600" height="600">
+                    Oops ... your browser doesn't support the HTML5 canvas element
+                </canvas>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
